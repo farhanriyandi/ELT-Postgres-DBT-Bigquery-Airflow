@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_brands
+    description: 'Brand staging'
+    columns:
+      - name: brand_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_products
+    description: 'product staging'
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: brand_id
+        data_tests:
+          - not_null
+
+  - name: stg_orders
+    description: 'order staging'
+    columns:
+      - name: order_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_order_details
+    description: 'order staging details'
+    columns:
+      - name: order_detail_id
+        data_tests:
+          - not_null
+          - unique

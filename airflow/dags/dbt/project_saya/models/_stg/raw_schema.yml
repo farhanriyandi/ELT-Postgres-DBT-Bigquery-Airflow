@@ -1,0 +1,80 @@
+version: 2
+
+sources:
+  - name: my_data
+    schema: my_data
+
+    tables:
+      - name: raw_brands
+        columns:
+          - name: brand_id
+            description: 'Unique identifier for each brand'
+            data_tests:
+              - unique
+              - not_null
+          - name: name
+            description: 'Name of the brand'
+            data_tests:
+              - not_null
+
+      - name: raw_products
+        columns:
+          - name: product_id
+            description: 'Unique identifier for each product'
+            data_tests:
+              - unique
+              - not_null
+          - name: brand_id
+            description: 'Foreign key referencing brands'
+            data_tests:
+              - relationships:
+                  to: source('my_data', 'brands')
+                  field: brand_id
+          - name: name
+            description: 'Name of the product'
+            data_tests:
+              - not_null
+          - name: price
+            description: 'Price of the product'
+            data_tests:
+              - not_null
+
+      - name: raw_orders
+        columns:
+          - name: order_id
+            description: 'Unique identifier for each order'
+            data_tests:
+              - unique
+              - not_null
+          - name: order_date
+            description: 'Date and time the order was placed'
+            data_tests:
+              - not_null
+
+      - name: raw_order_details
+        columns:
+          - name: order_detail_id
+            description: 'Unique identifier for each order detail'
+            data_tests:
+              - unique
+              - not_null
+          - name: order_id
+            description: 'Foreign key referencing orders'
+            data_tests:
+              - relationships:
+                  to: source('my_data', 'orders')
+                  field: order_id
+          - name: product_id
+            description: 'Foreign key referencing products'
+            data_tests:
+              - relationships:
+                  to: source('my_data', 'products')
+                  field: product_id
+          - name: quantity
+            description: 'Quantity of the product ordered'
+            data_tests:
+              - not_null
+          - name: price
+            description: 'Price of the product in the order'
+            data_tests:
+              - not_null

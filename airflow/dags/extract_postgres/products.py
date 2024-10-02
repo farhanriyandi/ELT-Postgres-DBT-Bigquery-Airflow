@@ -37,7 +37,11 @@ def extract_products():
     df['price'] = df['price'].astype(str).map(decimal.Decimal)
     print(df)
 
+    # Konfigurasi job untuk menimpa data yang ada
+    job_config = bigquery.LoadJobConfig()
+    job_config.write_disposition = bigquery.WriteDisposition.WRITE_TRUNCATE  # replace data
+
     # Memuat data ke BigQuery
-    job = client.load_table_from_dataframe(df, table_ref)
+    job = client.load_table_from_dataframe(df, table_ref, job_config=job_config)
     job.result()
     print(f"Loaded {job.output_rows} rows into {dataset_id}:{table_id}.")

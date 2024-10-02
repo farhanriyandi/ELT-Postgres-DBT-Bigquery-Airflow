@@ -1,4 +1,12 @@
 # ELT
+## Tools
 
-![image](https://github.com/user-attachments/assets/8d27d316-f620-419c-a0da-31e2f12bda44)
+* Postgres (Data Source)
+* Python (Ingestion)
+* BigQuery (Data Warehouse)
+* Airflow (Orchestration)
+* DBT (Transformation)
+
+![image](https://github.com/user-attachments/assets/0badfd39-cc7d-4b30-800f-ca67d2624b1c)
+
 

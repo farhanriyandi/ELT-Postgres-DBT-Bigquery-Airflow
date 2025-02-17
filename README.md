@@ -16,16 +16,6 @@
 * Data Transformation: Use dbt to transform data directly in BigQuery.
 * Task Scheduling: Automate the ELT process using Apache Airflow.
 
-## Installation & Configuration
-```
-python3 -m venv dbt-venv   
-```
-
-### Activate virtual environment
-```
-source dbt-venv/bin/activate
-```
-
 ## Create an Astro project
 ```
 Astro dev init
@@ -44,6 +34,32 @@ This command creates all the necessary project files for running Airflow locally
 * In the “Keys” section, click “Add Key” and pick JSON.
 * The key will download automatically. Keep it safe and don’t share it.
 
+## Move to direktori dags and create a folder name dbt
+```
+cd dags
+mkdir dbt
+cd dbt
+```
+## Installation & Configuration virtual environments 
+```
+python3 -m venv dbt-venv   
+```
+
+### Activate virtual environment
+```
+source dbt-venv/bin/activate
+```
+
+## Install and Setup dbt
+Install dbt-bigquery
+```
+pip install dbt-bigquery==1.8.2
+```
+
+Run dbt cli to init dbt with BigQuery as data platform
+```
+dbt init project_saya
+```
 
 
 
